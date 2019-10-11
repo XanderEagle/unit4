@@ -1,7 +1,13 @@
+# by Xander Eagle
+# October 11, 2019
 import random
 
 
 def card():
+    """
+    randomizes the card
+    :return: a number between 1 and 10
+    """
     return random.randint(1, 10)
 
 
@@ -15,11 +21,35 @@ def main():
     if another_card == "yes":
         user_card_3 = card()
         user_total += user_card_3
-    print(user_total)
+        print("You drew a", user_card_3)
+        print("Your new total is", user_total)
+    if user_total > 21:
+        print("You lose!")
+    else:
+        dealer_total = dealer()
+        who_wins(dealer_total, user_total)
+
 
 def dealer():
+    """
+    simulates the dealers hand with 2 cards
+    :return: the dealers total hand
+    """
     dealer_card_1 = card()
     dealer_card_2 = card()
+    print("The dealer drew a", dealer_card_1, "and a", dealer_card_2)
+    dealer_total = dealer_card_1 + dealer_card_2
+    print("The dealer's total is", dealer_total)
+    return dealer_total
+
+
+def who_wins(dealer_total, user_total):
+    if dealer_total > user_total:
+        print("The dealer wins! Good try.")
+    elif dealer_total < user_total:
+        print("You win!")
+    elif dealer_total == user_total:
+        print("You tied the dealer. Wow that is pretty rare.")
 
 
 main()
