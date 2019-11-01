@@ -1,5 +1,6 @@
 # by Xander Eagle
 # October 11, 2019
+# this program simulates a blackjack game
 import random
 
 
@@ -9,6 +10,32 @@ def card():
     :return: a number between 1 and 10
     """
     return random.randint(1, 10)
+
+
+def dealer():
+    """
+    simulates the dealers hand with 2 cards
+    :return: the dealers total hand
+    """
+    dealer_card_1 = card()
+    dealer_card_2 = card()
+    print("The dealer drew a", dealer_card_1, "and a", dealer_card_2)
+    dealer_total = dealer_card_1 + dealer_card_2
+    print("The dealer's total is", dealer_total)
+    return dealer_total
+
+
+def who_wins(dealer_total, user_total):
+    """
+        uses if statements to tell the user who wins
+        :return: the dealers total hand
+        """
+    if dealer_total > user_total:
+        print("The dealer wins! Good try.")
+    elif dealer_total < user_total:
+        print("You win!")
+    elif dealer_total == user_total:
+        print("You tied the dealer. Wow that is pretty rare.")
 
 
 def main():
@@ -28,28 +55,6 @@ def main():
     else:
         dealer_total = dealer()
         who_wins(dealer_total, user_total)
-
-
-def dealer():
-    """
-    simulates the dealers hand with 2 cards
-    :return: the dealers total hand
-    """
-    dealer_card_1 = card()
-    dealer_card_2 = card()
-    print("The dealer drew a", dealer_card_1, "and a", dealer_card_2)
-    dealer_total = dealer_card_1 + dealer_card_2
-    print("The dealer's total is", dealer_total)
-    return dealer_total
-
-
-def who_wins(dealer_total, user_total):
-    if dealer_total > user_total:
-        print("The dealer wins! Good try.")
-    elif dealer_total < user_total:
-        print("You win!")
-    elif dealer_total == user_total:
-        print("You tied the dealer. Wow that is pretty rare.")
 
 
 main()
